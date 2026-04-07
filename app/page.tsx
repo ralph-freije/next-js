@@ -1,9 +1,5 @@
-import Image from "next/image";
+import Banner from "./components/banner";
 
-export default function Home() {
-  return (
-<div>
-  <h1> new next.js project </h1>
-</div> 
-  );
+export default function Page() {
+  return <Banner />;
 }
