@@ -11,9 +11,15 @@ export default function Footer() {
         </div>
 
         <div className="flex gap-6 text-sm text-gray-300">
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#">Contact</a>
+          <a href="#" className="cursor-pointer transition duration-300 hover:text-white">
+            Privacy
+          </a>
+          <a href="#" className="cursor-pointer transition duration-300 hover:text-white">
+            Terms
+          </a>
+          <a href="#" className="cursor-pointer transition duration-300 hover:text-white">
+            Contact
+          </a>
         </div>
 
       </div>
