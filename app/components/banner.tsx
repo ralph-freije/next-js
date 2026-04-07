@@ -4,8 +4,6 @@ export default function Banner() {
   return (
     <section className="w-full bg-gray-100">
       <div className="mx-auto grid min-h-[500px] max-w-7xl items-center gap-10 px-6 py-16 md:grid-cols-2">
-
-        {/* LEFT */}
         <div>
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-gray-500">
             Welcome to the app
@@ -31,7 +29,7 @@ export default function Banner() {
         </div>
 
         <div className="flex justify-center">
-          <div className="relative h-[320px] w-full max-w-[500px] overflow-hidden rounded-2xl shadow-lg">
+          <div className="cursor-pointer relative h-[320px] w-full max-w-[500px] overflow-hidden rounded-2xl shadow-lg">
             <Image
               src="/images/banner-image.jpg"
               alt="banner"

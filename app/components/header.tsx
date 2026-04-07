@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header className="relative z-40 w-full border-b bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="cursor-pointer flex items-center">
           <Image
             src="/images/logo1.png"
             alt="Creoshift logo"
