@@ -3,14 +3,33 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // ✅ ADD THIS
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname(); // ✅ CURRENT ROUTE
+
+  const isActive = (path: string) =>
+    pathname === path || pathname.startsWith(path + "/");
+
+  const linkClass = (path: string) =>
+    `cursor-pointer text-sm transition duration-300 ${
+      isActive(path)
+        ? "text-black font-semibold border-b-2 border-green-500 pb-1"
+        : "text-gray-400 hover:text-black"
+    }`;
+
+  const mobileLinkClass = (path: string) =>
+    `cursor-pointer transition ${
+      isActive(path)
+        ? "text-green-500 font-semibold"
+        : "text-gray-700 hover:text-black"
+    }`;
 
   return (
     <header className="relative z-40 w-full border-b bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="cursor-pointer flex items-center">
+        <Link href="/" className="flex items-center">
           <Image
             src="/images/logo1.png"
             alt="Creoshift logo"
@@ -23,28 +42,19 @@ export default function Header() {
         </Link>
 
         <nav className="hidden gap-6 md:flex">
-          <Link
-            href="/"
-            className="cursor-pointer text-sm text-gray-400 transition duration-300 hover:text-black"
-          >
+          <Link href="/" className={linkClass("/")}>
             Home
           </Link>
-          <Link
-            href="#"
-            className="cursor-pointer text-sm text-gray-400 transition duration-300 hover:text-black"
-          >
+
+          <Link href="/about" className={linkClass("/about")}>
             About
           </Link>
-          <Link
-            href="#"
-            className="cursor-pointer text-sm text-gray-400 transition duration-300 hover:text-black"
-          >
+
+          <Link href="/services" className={linkClass("/services")}>
             Services
           </Link>
-          <Link
-            href="#"
-            className="cursor-pointer text-sm text-gray-400 transition duration-300 hover:text-black"
-          >
+
+          <Link href="/contact" className={linkClass("/contact")}>
             Contact
           </Link>
         </nav>
@@ -77,16 +87,35 @@ export default function Header() {
             ✕
           </button>
 
-          <Link href="/" className="cursor-pointer text-gray-700 hover:text-black">
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            className={mobileLinkClass("/")}
+          >
             Home
           </Link>
-          <Link href="#" className="cursor-pointer text-gray-700 hover:text-black">
+
+          <Link
+            href="/about"
+            onClick={() => setOpen(false)}
+            className={mobileLinkClass("/about")}
+          >
             About
           </Link>
-          <Link href="#" className="cursor-pointer text-gray-700 hover:text-black">
+
+          <Link
+            href="/services"
+            onClick={() => setOpen(false)}
+            className={mobileLinkClass("/services")}
+          >
             Services
           </Link>
-          <Link href="#" className="cursor-pointer text-gray-700 hover:text-black">
+
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            className={mobileLinkClass("/contact")}
+          >
             Contact
           </Link>
         </div>
