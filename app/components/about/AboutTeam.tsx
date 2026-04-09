@@ -1,28 +1,27 @@
 import Image from "next/image";
 
-const team = [
-  { name: "ralph", role: "Frontend Developer" },
-  { name: "michel", role: "Backend Developer" },
-  { name: "peter", role: "UI/UX Designer" },
-];
+type TeamMember = {
+  name: string;
+  role: string;
+  image: string;
+};
 
-export default function AboutTeam() {
+type AboutTeamProps = {
+  title: string;
+  members: TeamMember[];
+};
+
+export default function AboutTeam({ title, members }: AboutTeamProps) {
   return (
     <section className="w-full py-16 bg-white text-center">
-
-      <h2 className="text-3xl font-semibold mb-10 text-black">
-        Our Team
-      </h2>
+      <h2 className="text-3xl font-semibold mb-10 text-black">{title}</h2>
 
       <div className="flex flex-wrap justify-center gap-8">
-
-        {team.map((member, i) => (
+        {members.map((member, i) => (
           <div key={i} className="w-[200px] group">
-
-            {/* IMAGE */}
             <div className="relative h-[200px] w-full rounded-lg overflow-hidden mb-4">
               <Image
-                src="/images/avatar.jpg"
+                src={member.image}
                 alt={member.name}
                 fill
                 sizes="200px"
@@ -32,12 +31,9 @@ export default function AboutTeam() {
 
             <h3 className="font-semibold text-black">{member.name}</h3>
             <p className="text-gray-500 text-sm">{member.role}</p>
-
           </div>
         ))}
-
       </div>
-
     </section>
   );
 }

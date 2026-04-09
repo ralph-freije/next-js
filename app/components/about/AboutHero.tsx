@@ -1,13 +1,18 @@
-export default function AboutHero() {
+type Props = {
+  title: string;
+  description: string;
+};
+
+export default function AboutHero({ title, description }: Props) {
   return (
-    <section className="w-full bg-[#0a1a3a] py-20 text-center text-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          About Us
+    <section className="w-full bg-black text-white py-16">
+      <div className="max-w-7xl mx-auto px-6">
+        <h1 className="text-3xl md:text-5xl font-bold mb-4">
+          {title}
         </h1>
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          We help developers build modern, scalable applications
-          with powerful tools and intuitive design.
+
+        <p className="text-gray-300 max-w-2xl">
+          {description}
         </p>
       </div>
     </section>

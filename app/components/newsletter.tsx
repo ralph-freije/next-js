@@ -2,42 +2,48 @@
 
 import { useState } from "react";
 
-export default function Newsletter() {
+type NewsletterProps = {
+  title: string;
+  description?: string;
+  className?: string;
+  placeholder?: string;
+  buttonText?: string;
+};
+
+export default function Newsletter({
+  title,
+  description,
+  className,
+  placeholder = "Enter your email",
+  buttonText = "Subscribe",
+}: NewsletterProps) {
   const [email, setEmail] = useState("");
 
   return (
-    <section className="w-full bg-[#0a1a3a] py-12">
+    <section className="bg-[#0a1a3a] py-12 text-center">
+      <h2 className={`text-2xl font-semibold text-white mb-2 ${className ?? ""}`}>
+        {title}
+      </h2>
 
-      <div className="max-w-6xl mx-auto px-6 text-center">
+      {description && <p className="text-gray-400 mb-6">{description}</p>}
 
-        <h2 className="text-2xl md:text-3xl font-semibold text-white mb-2">
-          Stay Updated 🚀
-        </h2>
+      <div className="flex items-center justify-center">
+        <div className="flex w-full max-w-md bg-white rounded-lg overflow-hidden shadow-md">
+          <input
+            type="email"
+            placeholder={placeholder}
+            className="flex-1 px-4 py-3 text-black outline-none"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <p className="text-gray-400 mb-6">
-          Subscribe to get the latest jobs, updates, and exclusive offers.
-        </p>
-
-        <div className="flex items-center justify-center">
-
-          <div className="flex w-full max-w-md bg-white rounded-lg overflow-hidden shadow-md">
-
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 text-black outline-none"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-
-            <button className="bg-green-500 hover:bg-green-600 px-6 text-white font-medium transition">
-              Subscribe
-            </button>
-
-          </div>
-
+         <button
+  onClick={() => alert(`Subscribed: ${email}`)}
+  className="bg-green-500 hover:bg-green-600 px-6 text-white font-medium transition"
+>
+  {buttonText}
+</button>
         </div>
-
       </div>
     </section>
   );

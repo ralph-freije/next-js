@@ -24,17 +24,21 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="flex gap-6 text-sm text-gray-300">
-          <a href="#" className="cursor-pointer transition duration-300 hover:text-white">
-            Privacy
-          </a>
-          <a href="#" className="cursor-pointer transition duration-300 hover:text-white">
-            Terms
-          </a>
-          <a href="#" className="cursor-pointer transition duration-300 hover:text-white">
-            Contact
-          </a>
-        </div>
+
+
+<div className="flex justify-center gap-8">
+  <Link href="/about" className="hover:text-gray-300">
+    About
+  </Link>
+
+  <Link href="/services" className="hover:text-gray-300">
+    Services
+  </Link>
+
+  <Link href="/contact" className="hover:text-gray-300">
+    Contact
+  </Link>
+</div>
 
       </div>
     </footer>

@@ -1,39 +1,31 @@
-const plans = [
-  {
-    name: "Basic",
-    price: "$99",
-    features: ["Website", "Responsive Design", "Email Support"],
-  },
-  {
-    name: "Pro",
-    price: "$199",
-    features: ["Everything in Basic", "API Integration", "Priority Support"],
-  },
-  {
-    name: "Enterprise",
-    price: "$399",
-    features: ["Custom Solutions", "Full Support", "Cloud Deployment"],
-  },
-];
+type PlanItem = {
+  name: string;
+  price: string;
+  features: string[];
+};
 
-export default function ServicesPricing() {
+type ServicesPricingProps = {
+  title: string;
+  plans: PlanItem[];
+  buttonText: string;
+};
+
+export default function ServicesPricing({
+  title,
+  plans,
+  buttonText,
+}: ServicesPricingProps) {
   return (
     <section className="w-full py-16 bg-white text-center">
-
-      <h2 className="text-3xl font-semibold mb-10 text-black">
-        Pricing Plans
-      </h2>
+      <h2 className="text-3xl font-semibold mb-10 text-black">{title}</h2>
 
       <div className="flex flex-wrap justify-center gap-8">
-
         {plans.map((plan, i) => (
           <div
             key={i}
             className="cursor-pointer w-[260px] p-6 bg-gray-50 rounded-lg shadow hover:shadow-lg transition"
           >
-            <h3 className="text-xl font-semibold mb-2">
-              {plan.name}
-            </h3>
+            <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
 
             <p className="text-2xl font-bold text-green-500 mb-4">
               {plan.price}
@@ -46,13 +38,11 @@ export default function ServicesPricing() {
             </ul>
 
             <button className="cursor-pointer bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
-              Choose Plan
+              {buttonText}
             </button>
           </div>
         ))}
-
       </div>
-
     </section>
   );
 }

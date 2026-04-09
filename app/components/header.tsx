@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // ✅ ADD THIS
+import { usePathname } from "next/navigation";
+import { createPortal } from "react-dom";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname(); // ✅ CURRENT ROUTE
+  const pathname = usePathname();
 
   const isActive = (path: string) =>
     pathname === path || pathname.startsWith(path + "/");
@@ -27,7 +28,7 @@ export default function Header() {
     }`;
 
   return (
-    <header className="relative z-40 w-full border-b bg-white">
+    <header className="relative z-[1000] w-full border-b bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center">
           <Image
@@ -45,15 +46,12 @@ export default function Header() {
           <Link href="/" className={linkClass("/")}>
             Home
           </Link>
-
           <Link href="/about" className={linkClass("/about")}>
             About
           </Link>
-
           <Link href="/services" className={linkClass("/services")}>
             Services
           </Link>
-
           <Link href="/contact" className={linkClass("/contact")}>
             Contact
           </Link>
@@ -67,59 +65,65 @@ export default function Header() {
         </button>
       </div>
 
-      {open && (
-        <div
-          className="fixed inset-0 z-40 bg-black/50"
-          onClick={() => setOpen(false)}
-        />
-      )}
+      {open &&
+        createPortal(
+          <>
+            <div
+              className="fixed inset-0 bg-black/50"
+              style={{ zIndex: 9999 }}
+              onClick={() => setOpen(false)}
+            />
+            <div
+              className={`fixed top-0 right-0 h-full w-[250px] bg-white shadow-lg transition duration-300 ${
+                open ? "translate-x-0" : "translate-x-full"
+              }`}
+              style={{ zIndex: 10000 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex flex-col gap-6 p-6">
+                <button
+                  className="self-end text-xl cursor-pointer"
+                  onClick={() => setOpen(false)}
+                >
+                  ✕
+                </button>
 
-      <div
-        className={`fixed top-0 right-0 z-50 h-full w-[250px] transform bg-white shadow-lg transition duration-300 ${
-          open ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col gap-6 p-6">
-          <button
-            className="self-end text-xl cursor-pointer"
-            onClick={() => setOpen(false)}
-          >
-            ✕
-          </button>
+                <Link
+                  href="/"
+                  onClick={() => setOpen(false)}
+                  className={mobileLinkClass("/")}
+                >
+                  Home
+                </Link>
 
-          <Link
-            href="/"
-            onClick={() => setOpen(false)}
-            className={mobileLinkClass("/")}
-          >
-            Home
-          </Link>
+                <Link
+                  href="/about"
+                  onClick={() => setOpen(false)}
+                  className={mobileLinkClass("/about")}
+                >
+                  About
+                </Link>
 
-          <Link
-            href="/about"
-            onClick={() => setOpen(false)}
-            className={mobileLinkClass("/about")}
-          >
-            About
-          </Link>
+                <Link
+                  href="/services"
+                  onClick={() => setOpen(false)}
+                  className={mobileLinkClass("/services")}
+                >
+                  Services
+                </Link>
 
-          <Link
-            href="/services"
-            onClick={() => setOpen(false)}
-            className={mobileLinkClass("/services")}
-          >
-            Services
-          </Link>
-
-          <Link
-            href="/contact"
-            onClick={() => setOpen(false)}
-            className={mobileLinkClass("/contact")}
-          >
-            Contact
-          </Link>
-        </div>
-      </div>
+                <Link
+                  href="/contact"
+                  onClick={() => setOpen(false)}
+                  className={mobileLinkClass("/contact")}
+                >
+                  Contact
+                </Link>
+              </div>
+            </div>
+          </>,
+          document.body
+        )}
     </header>
   );
 }

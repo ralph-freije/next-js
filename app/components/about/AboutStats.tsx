@@ -2,20 +2,29 @@
 
 import { BarChart3, Users, TrendingUp, ShieldCheck } from "lucide-react";
 
-const stats = [
-  { label: "Projects Built", value: "120+", icon: BarChart3 },
-  { label: "Active Users", value: "10K+", icon: Users },
-  { label: "Performance Boost", value: "95%", icon: TrendingUp },
-  { label: "Uptime", value: "99.9%", icon: ShieldCheck },
-];
+type StatItem = {
+  label: string;
+  value: string;
+  icon: "BarChart3" | "Users" | "TrendingUp" | "ShieldCheck";
+};
 
-export default function AboutStats() {
+type AboutStatsProps = {
+  stats: readonly StatItem[];
+};
+
+const iconMap = {
+  BarChart3,
+  Users,
+  TrendingUp,
+  ShieldCheck,
+};
+
+export default function AboutStats({ stats }: AboutStatsProps) {
   return (
     <section className="w-full py-16 bg-[#0a1a3a] text-white">
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-
         {stats.map((stat, i) => {
-          const Icon = stat.icon;
+          const Icon = iconMap[stat.icon];
 
           return (
             <div
@@ -26,13 +35,10 @@ export default function AboutStats() {
               <h3 className="text-3xl font-bold text-green-400">
                 {stat.value}
               </h3>
-              <p className="text-gray-400 text-sm">
-                {stat.label}
-              </p>
+              <p className="text-gray-400 text-sm">{stat.label}</p>
             </div>
           );
         })}
-
       </div>
     </section>
   );
