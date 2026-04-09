@@ -4,6 +4,7 @@ import AboutStats from "../components/about/AboutStats";
 import AboutFeatures from "../components/about/AboutFeatures";
 import AboutTeam from "../components/about/AboutTeam";
 import AboutCTA from "../components/about/AboutCTA";
+import AboutFAQ from "../components/about/AboutFAQ";
 
 export default function AboutPage() {
   const heroData = {
@@ -52,6 +53,27 @@ const teamData = {
     buttonText: "Contact Us",
     buttonHref: "/contact",
   };
+  const faqData = {
+  title: "Frequently Asked Questions",
+  faqs: [
+    {
+      question: "What services do you offer?",
+      answer: "We provide web development, UI/UX design, and scalable cloud solutions.",
+    },
+    {
+      question: "How can I contact your team?",
+      answer: "You can reach us through the contact page or directly via email.",
+    },
+    {
+      question: "Do you work with startups?",
+      answer: "Yes, we love working with startups and helping them scale.",
+    },
+    {
+      question: "What technologies do you use?",
+      answer: "We use modern technologies like Next.js, Laravel, and cloud platforms.",
+    },
+  ],
+};
 
   return (
     <>
@@ -61,6 +83,7 @@ const teamData = {
       <AboutFeatures {...featuresData} />
       <AboutTeam {...teamData} />
       <AboutCTA {...ctaData} />
+      <AboutFAQ {...faqData} />
     </>
   );
 }
