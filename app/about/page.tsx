@@ -36,15 +36,16 @@ export default function AboutPage() {
     ] as const,
   };
 
-  const teamData = {
-    title: "Our Team",
-    members: [
-      { name: "ralph", role: "Frontend Developer", image: "/images/avatar.jpg" },
-      { name: "michel", role: "Backend Developer", image: "/images/avatar.jpg" },
-      { name: "peter", role: "UI/UX Designer", image: "/images/avatar.jpg" },
-    ],
-  };
-
+const teamData = {
+  title: "Our Team",
+  members: [
+    { id: 1, name: "ralph", role: "Frontend Developer", image: "/images/avatar.jpg" },
+    { id: 2, name: "michel", role: "Backend Developer", image: "/images/avatar.jpg" },
+    { id: 3, name: "peter", role: "UI/UX Designer", image: "/images/avatar.jpg" },
+    { id: 4, name: "john", role: "DevOps Engineer", image: "/images/avatar.jpg" },
+    { id: 5, name: "sara", role: "Product Designer", image: "/images/avatar.jpg" },
+  ],
+};
   const ctaData = {
     title: "Ready to work with us?",
     description: "Let’s create something impactful together.",

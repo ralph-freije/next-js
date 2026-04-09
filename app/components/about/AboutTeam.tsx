@@ -1,6 +1,14 @@
+"use client";
+
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
 
 type TeamMember = {
+  id: number;
   name: string;
   role: string;
   image: string;
@@ -16,23 +24,35 @@ export default function AboutTeam({ title, members }: AboutTeamProps) {
     <section className="w-full py-16 bg-white text-center">
       <h2 className="text-3xl font-semibold mb-10 text-black">{title}</h2>
 
-      <div className="flex flex-wrap justify-center gap-8">
-        {members.map((member, i) => (
-          <div key={i} className="w-[200px] group">
-            <div className="relative h-[200px] w-full rounded-lg overflow-hidden mb-4">
-              <Image
-                src={member.image}
-                alt={member.name}
-                fill
-                sizes="200px"
-                className="object-cover transition duration-500 group-hover:scale-105"
-              />
-            </div>
+      <div className="max-w-6xl mx-auto px-6">
+        <Swiper
+          modules={[Navigation]}
+          navigation
+          spaceBetween={20}
+          slidesPerView={1.2}
+          breakpoints={{
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {members.map((member) => (
+            <SwiperSlide key={member.id}>
+              <div className="flex flex-col items-center">
+                <div className="relative h-[120px] w-[120px] rounded-full overflow-hidden mb-4">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
 
-            <h3 className="font-semibold text-black">{member.name}</h3>
-            <p className="text-gray-500 text-sm">{member.role}</p>
-          </div>
-        ))}
+                <h3 className="font-semibold text-black">{member.name}</h3>
+                <p className="text-gray-500 text-sm">{member.role}</p>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </section>
   );

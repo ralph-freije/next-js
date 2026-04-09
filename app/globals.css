@@ -24,3 +24,12 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.swiper-button-prev,
+.swiper-button-next {
+  color: black;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: #22c55e;
+}
