@@ -22,12 +22,13 @@ type AboutTeamProps = {
 export default function AboutTeam({ title, members }: AboutTeamProps) {
   return (
     <section className="w-full py-16 bg-white text-center">
-      <h2 className="text-3xl font-semibold mb-10 text-black">{title}</h2>
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-3xl font-semibold mb-10 text-black">{title}</h2>
 
-      <div className="max-w-6xl mx-auto px-6">
         <Swiper
           modules={[Navigation]}
           navigation
+          centeredSlides
           spaceBetween={20}
           slidesPerView={1.2}
           breakpoints={{
@@ -36,7 +37,7 @@ export default function AboutTeam({ title, members }: AboutTeamProps) {
           }}
         >
           {members.map((member) => (
-            <SwiperSlide key={member.id}>
+            <SwiperSlide key={member.id} className="flex justify-center">
               <div className="flex flex-col items-center">
                 <div className="relative h-[120px] w-[120px] rounded-full overflow-hidden mb-4">
                   <Image

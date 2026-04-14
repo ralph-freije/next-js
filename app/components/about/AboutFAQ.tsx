@@ -34,7 +34,7 @@ export default function AboutFAQ({ title, faqs }: AboutFAQProps) {
             >
               <button
                 onClick={() => toggle(index)}
-                className="w-full text-left px-6 py-4 flex justify-between items-center"
+                className="cursor-pointer w-full text-left px-6 py-4 flex justify-between items-center"
               >
                 <span className="font-medium text-black">
                   {faq.question}

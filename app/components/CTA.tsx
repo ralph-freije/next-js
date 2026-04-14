@@ -13,7 +13,7 @@ export default function CTA({
   secondaryButtonText,
 }: CTAProps) {
   return (
-    <section className="w-full bg-gray-900 py-20 text-white">
+    <section className="w-full bg-gray-900 py-20 text-white mb-12">
       <div className="mx-auto max-w-7xl px-6 text-center">
         <h2 className="text-4xl font-bold mb-4">{title}</h2>
 

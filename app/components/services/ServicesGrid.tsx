@@ -24,7 +24,7 @@ export default function ServicesGrid({
 }: ServicesGridProps) {
   return (
     <section className="w-full py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-3xl font-semibold text-center text-black mb-10">
           {title}
         </h2>

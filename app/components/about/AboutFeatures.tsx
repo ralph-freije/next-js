@@ -23,7 +23,7 @@ export default function AboutFeatures({
 }: AboutFeaturesProps) {
   return (
     <section className="w-full py-16 bg-gray-100">
-      <div className="max-w-6xl mx-auto px-6 text-center">
+      <div className="max-w-7xl mx-auto px-6 text-center">
         <h2 className="text-3xl font-semibold mb-10 text-black">{title}</h2>
 
         <div className="cursor-pointer grid sm:grid-cols-2 md:grid-cols-4 gap-6 text-black">

@@ -33,3 +33,6 @@ body {
 .swiper-button-next:hover {
   color: #22c55e;
 }
+section {
+  width: 100%;
+}

@@ -22,7 +22,7 @@ const iconMap = {
 export default function AboutStats({ stats }: AboutStatsProps) {
   return (
     <section className="w-full py-16 bg-[#0a1a3a] text-white">
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {stats.map((stat, i) => {
           const Icon = iconMap[stat.icon];
 
