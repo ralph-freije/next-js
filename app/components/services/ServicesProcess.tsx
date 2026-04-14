@@ -18,7 +18,7 @@ export default function ServicesProcess({
       <h2 className="text-3xl font-semibold mb-14 text-black">{title}</h2>
 
       <div className="max-w-7xl mx-auto px-6 relative">
-        <div className="hidden md:block absolute top-10 left-0 w-full h-[2px] bg-gray-300" />
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[2px] bg-gray-300" />
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-10">
           {steps.map((step, i) => (

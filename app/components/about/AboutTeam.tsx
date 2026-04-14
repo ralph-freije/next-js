@@ -28,9 +28,8 @@ export default function AboutTeam({ title, members }: AboutTeamProps) {
         <Swiper
           modules={[Navigation]}
           navigation
-          centeredSlides
           spaceBetween={20}
-          slidesPerView={1.2}
+          slidesPerView={1}
           breakpoints={{
             640: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },

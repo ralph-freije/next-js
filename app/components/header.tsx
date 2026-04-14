@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,7 +8,24 @@ import { createPortal } from "react-dom";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(true);
   const pathname = usePathname();
+
+  useEffect(() => {
+    let lastScroll = window.scrollY;
+
+    const handleScroll = () => {
+      if (window.scrollY > lastScroll) {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
+      lastScroll = window.scrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const isActive = (path: string) =>
     pathname === path || pathname.startsWith(path + "/");
@@ -28,7 +45,11 @@ export default function Header() {
     }`;
 
   return (
-    <header className="relative z-[1000] w-full border-b bg-white">
+    <header
+      className={`fixed top-0 left-0 w-full border-b bg-white z-[1000] transition-transform duration-300 ${
+        show ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center">
           <Image
